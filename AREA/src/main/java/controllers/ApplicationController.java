@@ -16,6 +16,8 @@
 
 package controllers;
 
+import conf.EpitechApi;
+import conf.FacebookApi;
 import ninja.Result;
 import ninja.Results;
 
@@ -38,6 +40,26 @@ public class ApplicationController {
 
         return Results.json().render(simplePojo);
 
+    }
+
+    public Result facebookApi() {
+        SimplePojo simplePojo = new SimplePojo();
+        FacebookApi facebookApi = new FacebookApi();
+        facebookApi.init();
+        simplePojo.content = "Connection = " + "     notification = ";
+        return Results.json().render(simplePojo);
+    }
+
+    public Result epitechApi()
+    {
+        SimplePojo simplePojo = new SimplePojo();
+        EpitechApi epi = new EpitechApi("joseph.demersseman@epitech.eu","=bdl2SL^");
+
+
+
+        epi.init();
+        simplePojo.content = "Connection = " + epi.getConnection()+ "     notification = "+ epi.getNotifications();
+        return Results.json().render(simplePojo);
     }
     
     public static class SimplePojo {
