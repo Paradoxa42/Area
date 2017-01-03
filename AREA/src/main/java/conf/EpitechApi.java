@@ -54,8 +54,6 @@ public class EpitechApi {
 
             ret = con.getContent().toString();
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

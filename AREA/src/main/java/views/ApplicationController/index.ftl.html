@@ -8,6 +8,7 @@
     <a href="/epitechApi.json">epitech Api test</a>
     <a href="/facebookApi.json">facebook Api test</a>
     <div id="status"></div>
+    <div id="JsonResult"></div>
     <script>
         // This is called with the results from from FB.getLoginStatus().
         function statusChangeCallback(response) {
@@ -90,6 +91,7 @@
                 console.log('Successful login for: ' + response.name);
                 document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.name + '!' + response.id;
+                document.getElementById('JsonResult').innerHTML = JSON.stringify(response);
             });
         }
         function logout() {
