@@ -20,6 +20,8 @@ new_like() : (301)
 new_comment() : (302)
 new_notification : (303)
 new_askFriend() : (304)
+new_post_on_page : (305)
+new_message(306)
 
 Actions twitter (400)
 
@@ -58,3 +60,18 @@ Send_Email (400)
 Actions Twitter (500)
 
 Twitt (500)
+
+
+Schéma de la base de donnée
+
+Client :
+       ID_CLient (int)  last_login(time) connected(bool) token(string)
+
+FB :
+   ID_Client(int) ID_FB(int)
+
+Google :
+       ID_Client(int) ID_Google(int)
+
+Actions_Reaction :
+		 ID_Action (int) ID_Reaction(int) ID_Client
