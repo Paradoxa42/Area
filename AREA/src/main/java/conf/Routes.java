@@ -25,13 +25,13 @@ import controllers.ApplicationController;
 public class Routes implements ApplicationRoutes {
 
     @Override
-    public void init(Router router) {  
-        
-        router.GET().route("/").with(ApplicationController.class, "index");
+    public void init(Router router) {
+
+        router.GET().route("/").with(ApplicationController.class, "front");
         router.GET().route("/hello_world.json").with(ApplicationController.class, "helloWorldJson");
         router.GET().route("/epitechApi.json").with(ApplicationController.class, "epitechApi");
         router.GET().route("/facebookApi.json").with(ApplicationController.class, "facebookApi");
- 
+        router.GET().route("/settings").with(ApplicationController.class, "settings");
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)
         ///////////////////////////////////////////////////////////////////////    

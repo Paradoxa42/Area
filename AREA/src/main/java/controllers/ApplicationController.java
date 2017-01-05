@@ -54,14 +54,21 @@ public class ApplicationController {
     {
         SimplePojo simplePojo = new SimplePojo();
         EpitechApi epi = new EpitechApi("joseph.demersseman@epitech.eu","=bdl2SL^");
-
-
-
         epi.init();
         simplePojo.content = "Connection = " + epi.getConnection()+ "     notification = "+ epi.getNotifications();
         return Results.json().render(simplePojo);
     }
-    
+
+    public Result front()
+    {
+        return Results.html().template("views/ApplicationController/front.ftl.html");
+    }
+
+    public Result settings()
+    {
+        return Results.html().template("views/ApplicationController/Settings.ftl.html");
+    }
+
     public static class SimplePojo {
 
         public String content;
