@@ -32,6 +32,7 @@ public class Routes implements ApplicationRoutes {
         router.GET().route("/epitechApi.json").with(ApplicationController.class, "epitechApi");
         router.GET().route("/facebookApi.json").with(ApplicationController.class, "facebookApi");
         router.GET().route("/settings").with(ApplicationController.class, "settings");
+        router.POST().route("/settingsForm").with(ApplicationController.class, "postsettingUpdate");
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)
         ///////////////////////////////////////////////////////////////////////    
