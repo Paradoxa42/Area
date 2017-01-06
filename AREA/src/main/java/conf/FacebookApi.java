@@ -26,7 +26,6 @@ public class FacebookApi{
     public void init()
     {
         try {
-
             accessToken = "EAADPUjw0Ci4BAJSAZCBLfdFEwLw5VdSTZByHoRetN8BmqrhgiEw0mny9L1bXPkU6uIQXNAOmI83hQACR3enS5dG0PEFJp2vMWyYHvTaHjo4QVShiYJZAe5GB3tZAiDhSfzKJBqcQrTzZC3o85cLukXBGhO256MJwZD";
             FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.VERSION_2_8);
             ScopeBuilder scopeBuilder = new ScopeBuilder();
