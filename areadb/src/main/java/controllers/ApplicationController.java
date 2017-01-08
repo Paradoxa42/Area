@@ -41,122 +41,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 public class ApplicationController {
-    private List<ModuleEntity> Modules = new List<ModuleEntity>() {
-        @Override
-        public int size() {
-            return 0;
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public boolean contains(Object o) {
-            return false;
-        }
-
-        @Override
-        public Iterator<ModuleEntity> iterator() {
-            return null;
-        }
-
-        @Override
-        public Object[] toArray() {
-            return new Object[0];
-        }
-
-        @Override
-        public <T> T[] toArray(T[] a) {
-            return null;
-        }
-
-        @Override
-        public boolean add(ModuleEntity moduleEntity) {
-            return false;
-        }
-
-        @Override
-        public boolean remove(Object o) {
-            return false;
-        }
-
-        @Override
-        public boolean containsAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public boolean addAll(Collection<? extends ModuleEntity> c) {
-            return false;
-        }
-
-        @Override
-        public boolean addAll(int index, Collection<? extends ModuleEntity> c) {
-            return false;
-        }
-
-        @Override
-        public boolean removeAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public boolean retainAll(Collection<?> c) {
-            return false;
-        }
-
-        @Override
-        public void clear() {
-
-        }
-
-        @Override
-        public ModuleEntity get(int index) {
-            return null;
-        }
-
-        @Override
-        public ModuleEntity set(int index, ModuleEntity element) {
-            return null;
-        }
-
-        @Override
-        public void add(int index, ModuleEntity element) {
-
-        }
-
-        @Override
-        public ModuleEntity remove(int index) {
-            return null;
-        }
-
-        @Override
-        public int indexOf(Object o) {
-            return 0;
-        }
-
-        @Override
-        public int lastIndexOf(Object o) {
-            return 0;
-        }
-
-        @Override
-        public ListIterator<ModuleEntity> listIterator() {
-            return null;
-        }
-
-        @Override
-        public ListIterator<ModuleEntity> listIterator(int index) {
-            return null;
-        }
-
-        @Override
-        public List<ModuleEntity> subList(int fromIndex, int toIndex) {
-            return null;
-        }
-    };
+    private ArrayList<ModuleEntity> ListModules;
 
     @Inject
     Provider<EntityManager> entitiyManagerProvider;
@@ -228,126 +113,6 @@ public class ApplicationController {
     }
 
     public Result settings(Context context, react form) {
-        List<Item> reactions = new List<Item>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Item> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Item item) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Item> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, Collection<? extends Item> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public Item get(int index) {
-                return null;
-            }
-
-            @Override
-            public Item set(int index, Item element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, Item element) {
-
-            }
-
-            @Override
-            public Item remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<Item> listIterator() {
-                return null;
-            }
-
-            @Override
-            public ListIterator<Item> listIterator(int index) {
-                return null;
-            }
-
-            @Override
-            public List<Item> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-        };
-        reactions.add(new Item(400));
-        Modules.add(new ModuleEntity(new Item(305), reactions));
-        DropboxApi dropbox = new DropboxApi();
-        dropbox.init();
         return Results.html().template("views/ApplicationController/Settings.ftl.html").render(form);
     }
 
@@ -369,9 +134,16 @@ public class ApplicationController {
     }
 
     public Result update() {
-        String result;
-        for (ModuleEntity module : Modules) {
-            result = null;
+        System.out.println("modules = " + ListModules);
+        if (ListModules == null) {
+            ListModules = new ArrayList<ModuleEntity>();
+            ArrayList<Item> reactions = new ArrayList<Item>();
+            reactions.add(new Item(400));
+            ListModules.add(new ModuleEntity(new Item(305), reactions));
+            System.out.println(ListModules.toString());
+        }
+        for (ModuleEntity module : ListModules) {
+            String result = null;
             if (module.getAction().getId() >= 300 && module.getAction().getId() < 400) {
                 FacebookApi facebookApi = (FacebookApi) module.getAction().getAction();
                 if (module.getAction().getId() == 305)

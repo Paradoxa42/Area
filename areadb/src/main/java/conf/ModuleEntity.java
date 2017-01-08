@@ -1,12 +1,13 @@
 package conf;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModuleEntity {
     private Item action;
-    private List<Item> reactionList;
+    private ArrayList<Item> reactionList;
 
-    public ModuleEntity(Item action, List<Item> reactionList) {
+    public ModuleEntity(Item action, ArrayList<Item> reactionList) {
         this.action = action;
         this.reactionList = reactionList;
 

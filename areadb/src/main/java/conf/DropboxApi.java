@@ -2,11 +2,13 @@ package conf;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxEntry;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.ListFolderResult;
 import com.dropbox.core.v2.files.Metadata;
 import com.dropbox.core.v2.users.FullAccount;
+import org.omg.CORBA.Environment;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,25 +45,6 @@ public class DropboxApi {
             System.err.println(ex.getMessage());
             return;
         }
-        try {
-            File file;
-            file = new File("C:\\Users\\demers_j\\Desktop\\test\\test.txt");
-            System.out.println("Path : " + file.getAbsolutePath() + "   space = " + file.getTotalSpace());
-            System.out.println();
-            // Upload "test.txt" to Dropbox
-            try (InputStream in = new FileInputStream(file)) {
-                FileMetadata metadata = client.files().uploadBuilder("/test.txt")
-                        .uploadAndFinish(in);
-                System.out.println("metadata = " + metadata.toString());
-                SaveFile("12332133267", "Hello i like you ");
-            } catch (Exception ex) {
-                System.err.println(ex.getMessage());
-            }
-        }
-        catch (Exception ex)
-        {
-            System.err.println(ex.getMessage());
-        }
     }
 
     public void SaveFile(String fileName, String save)
@@ -71,7 +54,7 @@ public class DropboxApi {
             System.out.format("Canonical filename: %s\n", tempFile.getCanonicalFile());
             InputStream in = new FileInputStream(tempFile);
             FileMetadata metadata = client.files().uploadBuilder( "/"+fileName+".txt")
-                        .uploadAndFinish(in);
+                    .uploadAndFinish(in);
         }
         catch(Exception ex)
         {
@@ -79,5 +62,5 @@ public class DropboxApi {
         }
     }
 
-    
+
 }
