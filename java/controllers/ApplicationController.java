@@ -357,7 +357,7 @@ public class ApplicationController {
     }
 
     public void settingsParams(Session session, @PathParam("IdFacebook") int IdFacebook) {
-        session.put("ID_CLIENT", String.valueOf(IdFacebook) );
+        session.put("ID_FACEBOOK", String.valueOf(IdFacebook) );
     }
 
     public Result postsettingUpdate(Context context, react form) {
