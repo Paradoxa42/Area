@@ -1,0 +1,40 @@
+<#macro template title="template">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>${title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/assets/css/simple-sidebar.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/assets/webjars/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <#include "header.ftl.html"/>
+        <#if (flash.error)??>
+            <div class="alert alert-danger">
+                ${flash.error}
+            </div>
+        </#if>
+        <#if (flash.success)??>
+            <div class="alert alert-success">
+                ${flash.success}
+            </div>
+        </#if>
+        <#nested/>
+    </div>
+</body>
+</html>
+</#macro>
