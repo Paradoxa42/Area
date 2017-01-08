@@ -356,9 +356,8 @@ public class ApplicationController {
         return Results.html().template("views/ApplicationController/Settings.ftl.html").render(form);
     }
 
-    public Results settingsParams(Session session,  @PathParam("Id") int IdFacebook,
-        @PathParam("msg") String ) {
-        session.put(IdFacebook);
+    public void settingsParams(Session session, @PathParam("IdFacebook") int IdFacebook) {
+        session.put("ID_CLIENT", String.valueOf(IdFacebook) );
     }
 
     public Result postsettingUpdate(Context context, react form) {
