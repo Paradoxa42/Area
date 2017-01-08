@@ -25,7 +25,7 @@ public class Module extends AbstractModule {
 
     protected void configure() {
         
-        // bind your injections here!
+        bind(StartupActions.class);    
         
     }
 

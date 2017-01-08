@@ -16,58 +16,57 @@
 
 package controllers;
 
+import java.util.List;
+import java.util.Map;
 
-import conf.EpitechApi;
-import conf.FacebookApi;
+import models.Article;
 import ninja.Result;
 import ninja.Results;
 
+import com.google.common.collect.Maps;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import dao.ArticleDao;
+import dao.SetupDao;
 
-@Singleton
 public class ApplicationController {
+
+    @Inject
+    ArticleDao articleDao;
+
+    @Inject
+    SetupDao setupDao;
+
+    public ApplicationController() {
+
+    }
+
+    /**
+     * Method to put initial data in the db...
+     * 
+     * @return
+     */
+    public Result setup() {
+
+        setupDao.setup();
+
+        return Results.ok();
+
+    }
 
     public Result index() {
 
-        return Results.html();
+        Article frontPost = articleDao.getFirstArticleForFrontPage();
 
-    }
-    
-    public Result helloWorldJson() {
-        
-        SimplePojo simplePojo = new SimplePojo();
-        simplePojo.content = "Hello World! Hello Json!";
+        List<Article> olderPosts = articleDao.getOlderArticlesForFrontPage();
 
-        return Results.json().render(simplePojo);
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("frontArticle", frontPost);
+        map.put("olderArticles", olderPosts);
 
-    }
+        return Results.html().render("frontArticle", frontPost)
+                .render("olderArticles", olderPosts);
 
-    public Result facebookApi() {
-        SimplePojo simplePojo = new SimplePojo();
-        //FacebookApi facebookApi = new FacebookApi();
-        //DropboxApi dropboxApi = new DropboxApi();
-        //facebookApi.init();
-        //dropboxApi.init();
-        simplePojo.content = "Connection = " + "     notification = ";
-        return Results.json().render(simplePojo);
-    }
-
-    public Result epitechApi()
-    {
-        SimplePojo simplePojo = new SimplePojo();
-        EpitechApi epi = new EpitechApi("joseph.demersseman@epitech.eu","=bdl2SL^");
-
-
-
-        epi.init();
-        simplePojo.content = "Connection = " + epi.getConnection()+ "     notification = "+ epi.getNotifications();
-        return Results.json().render(simplePojo);
-    }
-    
-    public static class SimplePojo {
-
-        public String content;
-        
     }
 }
