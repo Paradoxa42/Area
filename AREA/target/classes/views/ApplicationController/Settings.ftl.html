@@ -1,0 +1,118 @@
+<#import "../layout/template.ftl.html" as template>
+    <@template.template "Settings">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Settings</h2>
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#facebook">
+                                        Facebook</a>
+                                </h4>
+                            </div>
+                            <div id="facebook" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p>Notification :
+                                        <form action="/settingsForm" method="post">
+                                        <table class="form">
+                                            <select name="idAction">
+                                                <option value="300" datatype="number">Nouveau post</option>
+                                                <option value="301" datatype="number">Nouveau like</option>
+                                                <option value="302" datatype="number">Nouveau commentaire</option>
+                                                <option value="303" datatype="number">nouvelle notification</option>
+                                                <option value="304" datatype="number">Nouvelle demande d'ami</option>
+                                                <option value="305" datatype="number">Nouveau poste sur une page</option>
+                                                <option value="306" datatype="number">Nouveau message</option>
+                                            </select>
+                                            <tr>
+                                                <th><label for="notification">Notification in app</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" id="notification"  name="notification" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="post_status_fb">Poster le status sur FB</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" id="post_status_fb"  name="post_status_fb" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="like_page">Liker la page Facebook</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" id="like_page"  name="like_page" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="add_playlist">Ajouter la vidéo à la playlist</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" id="add_playlist"  name="add_playlist" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="add_video">Ajouter la vidéo sur youtube</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" id="add_video"  name="add_video" /></td>
+                                            </tr>
+                                        </table>
+
+                                    <p>
+                                        <input type="submit" value="Send" /> <input type="reset"
+                                                                                    value="Reset">
+                                    </p>
+                                    </form>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#youtube">
+                                        Youtube</a>
+                                </h4>
+                            </div>
+                            <div id="youtube" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <form action="/settingsForm" method="post">
+                                        <table class="form">
+                                            <select name="idAction">
+                                                <option value="101" datatype="number">Nouvelle vue</option>
+                                                <option value="102" datatype="number">Nouveau like</option>
+                                                <option value="103" datatype="number">Nouveau commentaire</option>
+                                                <option value="104" datatype="number">Nouvelle vidéo sur la chaîne</option>
+                                                <option value="304" datatype="number">Nouvelle réponse</option>
+                                            </select>
+                                            <tr>
+                                                <th><label for="notification">Notification in app</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox"name="notification" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="post_status_fb">Poster le status sur FB</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" name="post_status_fb" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="like_page">Liker la page Facebook</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" name="like_page" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="add_playlist">Ajouter la vidéo à la playlist</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" name="add_playlist" /></td>
+                                            </tr>
+                                            <tr>
+                                                <th><label for="add_video">Ajouter la vidéo sur youtube</label></th>
+                                                <td><input class="checkbox-inline" type="checkbox" name="add_video" /></td>
+                                            </tr>
+                                        </table>
+
+                                        <p>
+                                            <input type="submit" value="Send" /> <input type="reset"
+                                                                                        value="Reset">
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="status"></div>
+                    <div id="JsonResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</@template.template>

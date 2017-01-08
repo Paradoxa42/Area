@@ -27,6 +27,7 @@ public class EpitechApi {
     private String notifications;
 
 
+
     private String executeGet(final String https_url, final String proxyName, final int port) {
         String ret = "";
 
@@ -56,9 +57,11 @@ public class EpitechApi {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("command work = " + ret);
+        System.out.println("command work = "+ ret);
         return ret;
     }
+
+
 
 
     private static String getHTML(String urlToRead) throws Exception {
@@ -81,7 +84,9 @@ public class EpitechApi {
             rd.close();
 
             return result.toString();
-        } catch (Exception ex) {
+        }
+        catch (Exception ex)
+        {
             System.err.println(ex.getMessage());
         }
         return null;
@@ -120,8 +125,8 @@ public class EpitechApi {
 
         //url = "https://selfsolve.apple.com/wcResults.do";
         URL obj = new URL(url);
-        System.out.println("url = " + url);
-        System.out.println("urlParameters = " + urlParameters);
+        System.out.println("url = "+ url);
+        System.out.println("urlParameters = "+ urlParameters);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
         //add reuqest header
@@ -181,20 +186,21 @@ public class EpitechApi {
         return notifications;
     }
 
-    public String POSTT(String url, String param1, String param2, String param3) {
+    public String POSTT(String url, String param1, String param2, String param3)
+    {
         try {
             String httpsURL = "https://intra.epitech.eu/";
 
-            String query = "login=" + URLEncoder.encode("joseph.demersseman@epitech.eu", "UTF-8");
+            String query = "login="+URLEncoder.encode("joseph.demersseman@epitech.eu","UTF-8");
             query += "&";
-            query += "password=" + URLEncoder.encode("=bdl2SL^", "UTF-8");
+            query += "password="+URLEncoder.encode("=bdl2SL^","UTF-8") ;
 
             URL myurl = new URL(httpsURL);
-            HttpsURLConnection con = (HttpsURLConnection) myurl.openConnection();
+            HttpsURLConnection con = (HttpsURLConnection)myurl.openConnection();
             con.setRequestMethod("POST");
 
             con.setRequestProperty("Content-length", String.valueOf(query.length()));
-            con.setRequestProperty("Content-Type", "application/x-www- form-urlencoded");
+            con.setRequestProperty("Content-Type","application/x-www- form-urlencoded");
             con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0;Windows98;DigExt)");
             con.setDoOutput(true);
 
@@ -207,23 +213,27 @@ public class EpitechApi {
 
             output.close();
 
-            DataInputStream input = new DataInputStream(con.getInputStream());
+            DataInputStream input = new DataInputStream( con.getInputStream() );
 
 
-            for (int c = input.read(); c != -1; c = input.read())
-                System.out.print((char) c);
+
+            for( int c = input.read(); c != -1; c = input.read() )
+                System.out.print( (char)c );
             input.close();
 
-            System.out.println("Resp Code:" + con.getResponseCode());
-            System.out.println("Resp Message:" + con.getResponseMessage());
+            System.out.println("Resp Code:"+con.getResponseCode());
+            System.out.println("Resp Message:"+ con.getResponseMessage());
             return con.getResponseMessage();
-        } catch (Exception ex) {
+        }
+        catch (Exception ex)
+        {
             System.out.println("error = " + ex);
         }
         return null;
     }
 
-    public void init() {
+    public void init()
+    {
         notifications = "MARCHE PAS";
         connection = "MARCHE PAS";
 
@@ -237,17 +247,17 @@ public class EpitechApi {
             System.out.println("");
             System.out.println("");
             System.out.println("connection test");
-            connection = POSTT("https://intra.epitech.eu/", "&login=" + user_name, "&password=" + "test", "&remember_me=on&format=json");
+            connection = POSTT("https://intra.epitech.eu/","&login=" + user_name , "&password=" + "test" , "&remember_me=on&format=json");
             System.out.println("connection success");
             //           if (connection != null) {
             //           notifications = getHTML("https://intra.epitech.eu?&format=json");
 //            }
-            System.out.println("connection = " + connection);
-            System.out.println("notification = " + notifications);
+            System.out.println("connection = "+connection);
+            System.out.println("notification = "+ notifications);
             URL url = new URL("https://intra.epitech.eu/?format=json");
             URLConnection conn = url.openConnection();
             InputStream is = conn.getInputStream();
-            System.out.println("is = " + is.toString());
+            System.out.println("is = "+ is.toString());
 
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             System.out.println("command work");
@@ -257,14 +267,17 @@ public class EpitechApi {
                 result.append(line);
             }
             rd.close();
-            System.out.println("result = " + result.toString());
+            System.out.println("result = "+ result.toString());
 
-        } catch (Exception ex) {
-            System.err.println("exeption = " + ex.getMessage());
+        }
+        catch (Exception ex)
+        {
+            System.err.println("exeption = "+ ex.getMessage());
         }
     }
 
-    public void newModule() {
+    public void newModule()
+    {
 
     }
 }

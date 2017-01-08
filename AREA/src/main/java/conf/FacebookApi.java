@@ -5,7 +5,6 @@ import com.restfb.*;
 import com.restfb.scope.ScopeBuilder;
 import com.restfb.scope.UserDataPermissions;
 import com.restfb.types.*;
-import controllers.ApplicationController;
 
 import java.util.List;
 
