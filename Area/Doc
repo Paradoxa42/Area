@@ -1,0 +1,77 @@
+Actions
+
+Actions Youtube (100)
+
+new_Vue() : (101)
+new_Like() : (102)
+new_comments() : (103)
+new_Video_In_Channel : (104)
+new_responses() : (105)
+
+Actions Gmail
+
+new_Email() : (200)
+new_message_chat : (201)
+
+Actions Facebook (300)
+
+new_post() : (300)
+new_like() : (301)
+new_comment() : (302)
+new_notification : (303)
+new_askFriend() : (304)
+new_post_on_page : (305)
+new_message(306)
+
+Actions twitter (400)
+
+new_twitt (configured): (400)
+new_retwitt (401)
+new_like(402)
+
+Actions Intra (500)
+
+New_Project : (500)
+New_Activitie : (501)
+New_Module (502)
+New_Notification (503)
+
+Reactions
+
+Reactions Platform (100)
+
+Notification (100)
+
+Reaction youtube (200)
+
+Add_Playlist(200)
+Add_Video(201)
+Abonnement (203)
+
+Reaction Facebook (300)
+
+Post_Status : (300)
+Like_page : (301)
+
+Action Gmail (400)
+
+Send_Email (400)
+
+Actions Twitter (500)
+
+Twitt (500)
+
+
+Schéma de la base de donnée
+
+Client :
+       ID_CLient (int)  last_login(time) connected(bool) token(string)
+
+FB :
+   ID_Client(int) ID_FB(int)
+
+Google :
+       ID_Client(int) ID_Google(int)
+
+Actions_Reaction :
+		 ID_Action (int) ID_Reaction(int) ID_Client
