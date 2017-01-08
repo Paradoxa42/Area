@@ -53,6 +53,8 @@ public class Routes implements ApplicationRoutes {
         router.GET().route("/").with(ApplicationController.class, "front");
         router.GET().route("/settings").with(ApplicationController.class, "Settings");
         router.POST().route("/settingsForm").with(ApplicationController.class, "postSettings");
+        //router.GET().route("/settingsParams/{IdFacebook: [0-9]+}").with(ApplicationController.class, "settingsParams");
+        router.GET().route("/update").with(ApplicationController.class, "update");
         ///////////////////////////////////////////////////////////////////////
         // Login / Logout
         ///////////////////////////////////////////////////////////////////////
