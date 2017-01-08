@@ -33,6 +33,7 @@ import com.google.inject.Singleton;
 
 import dao.ArticleDao;
 import dao.SetupDao;
+import ninja.params.PathParam;
 import ninja.session.Session;
 import org.json.JSONObject;
 
@@ -353,6 +354,11 @@ public class ApplicationController {
         DropboxApi dropbox = new DropboxApi();
         dropbox.init();
         return Results.html().template("views/ApplicationController/Settings.ftl.html").render(form);
+    }
+
+    public Results settingsParams(@PathParam("Id") int Id,
+        @PathParam("msg") String msg) {
+
     }
 
     public Result postsettingUpdate(Context context, react form) {
