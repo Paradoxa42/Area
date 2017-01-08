@@ -49,7 +49,10 @@ public class Routes implements ApplicationRoutes {
         if (!ninjaProperties.isProd()) {
             router.GET().route("/setup").with(ApplicationController.class, "setup");
         }
-        
+
+        router.GET().route("/").with(ApplicationController.class, "front");
+        router.GET().route("/settings").with(ApplicationController.class, "Settings");
+        router.POST().route("/settingsForm").with(ApplicationController.class, "postSettings");
         ///////////////////////////////////////////////////////////////////////
         // Login / Logout
         ///////////////////////////////////////////////////////////////////////

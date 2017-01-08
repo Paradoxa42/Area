@@ -19,7 +19,11 @@ package controllers;
 import java.util.List;
 import java.util.Map;
 
+import com.google.inject.Provider;
+import models.ActionReaction;
 import models.Article;
+import models.User;
+import ninja.Context;
 import ninja.Result;
 import ninja.Results;
 
@@ -29,8 +33,15 @@ import com.google.inject.Singleton;
 
 import dao.ArticleDao;
 import dao.SetupDao;
+import ninja.session.Session;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public class ApplicationController {
+
+    @Inject
+    Provider<EntityManager> entitiyManagerProvider;
 
     @Inject
     ArticleDao articleDao;
@@ -55,6 +66,26 @@ public class ApplicationController {
 
     }
 
+    public Result front(Session session)
+    {
+        return Results.html().template("views/ApplicationController/front.ftl.html");
+    }
+
+    public Result Settings(Session session)
+    {
+        session.put("ID_CLIENT", "100");
+        return Results.html().template("views/ApplicationController/Settings.ftl.html");
+    }
+
+    public Result postSettings(Session session, Context context)
+    {
+        EntityManager entityManager = entitiyManagerProvider.get();
+        Query q = entityManager.createNativeQuery("SELECT * FROM ActionReaction");
+        //WHERE p.id_client LIKE " + session.get("ID_CLIENT") + " and p.id_action = " + context.getParameter("idAction")
+        List<ActionReaction> action = q.getResultList();
+        return Results.noContent();
+    }
+
     public Result index() {
 
         Article frontPost = articleDao.getFirstArticleForFrontPage();
@@ -67,6 +98,5 @@ public class ApplicationController {
 
         return Results.html().render("frontArticle", frontPost)
                 .render("olderArticles", olderPosts);
-
     }
 }
