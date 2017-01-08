@@ -9,6 +9,10 @@ import javax.persistence.Id;
 @Entity
 public class Client
 {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long id;
+
     public Client() {}
 
     public Long id_client;

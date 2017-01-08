@@ -6,12 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class FaceBook
+public class Twitter
 {
-
-    public FaceBook() {}
-
-    public Long id_facebook;
-
-    public Long id_client;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long id;
 }

@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ninjadbtest" />
+        <module name="areadb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ninjadbtest" target="1.7" />
+      <module name="areadb" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

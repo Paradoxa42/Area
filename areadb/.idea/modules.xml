@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ninjadbtest.iml" filepath="$PROJECT_DIR$/ninjadbtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/areadb.iml" filepath="$PROJECT_DIR$/areadb.iml" />
     </modules>
   </component>
 </project>

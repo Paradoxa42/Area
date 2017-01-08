@@ -6,14 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ActionReaction
+public class FaceBook
 {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long id;
 
-    public ActionReaction() {}
+    public FaceBook() {}
 
-    public Long id_action;
-
-    public Long id_reaction;
+    public Long id_facebook;
 
     public Long id_client;
 }

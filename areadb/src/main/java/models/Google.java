@@ -6,7 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Google {
+public class Google
+{
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long id;
 
     public Google() {}
 
