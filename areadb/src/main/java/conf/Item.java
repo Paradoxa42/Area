@@ -11,10 +11,14 @@ public class Item {
         this.id = id;
         if (id >= 300 && id < 400) {
             this.action = new FacebookApi();
+            FacebookApi function =  (FacebookApi)this.action;
+            function.init();
         }
         else
         {
             this.action = new DropboxApi();
+            DropboxApi function =  (DropboxApi) this.action;
+            function.init();
         }
     }
 
